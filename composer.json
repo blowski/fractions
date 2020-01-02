@@ -1,0 +1,34 @@
+{
+    "name": "blowski/fractions",
+    "description": "Handle fractions in PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dan Blows",
+            "email": "d@nblo.ws"
+        }
+    ],
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev":  {
+        "phpunit/phpunit": "^7.0|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Blowski\\Fractions\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Blowski\\Fractions\\Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
