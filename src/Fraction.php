@@ -18,10 +18,6 @@ final class Fraction
 
     public function plus(Fraction $that): Fraction
     {
-        if($this->denominator === 1 || $this->denominator === $that->denominator) {
-            return new Fraction($this->numerator + $that->numerator, $that->denominator);
-        }
-
         return new Fraction(
             ($this->numerator * $that->denominator) + ($that->numerator * $this->denominator),
             $this->denominator * $that->denominator
