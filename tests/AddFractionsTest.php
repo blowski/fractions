@@ -42,4 +42,11 @@ class AddFractionsTest extends TestCase
         $sum = (new Fraction(1, 5))->plus(new Fraction(2, 5));
         self::assertEquals(new Fraction(3, 5), $sum);
     }
+
+    /** @test */
+    function different_denominators(): void
+    {
+        $sum = (new Fraction(1, 6))->plus(new Fraction(1, 5));
+        self::assertEquals(new Fraction(11, 30), $sum);
+    }
 }
