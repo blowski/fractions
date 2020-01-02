@@ -10,8 +10,10 @@ final class Fraction
 
     public function __construct(int $numerator, int $denominator = 1)
     {
-        $this->numerator = $numerator;
-        $this->denominator = $denominator;
+        $gcd = GCDCalculator::gcd($numerator, $denominator);
+        $this->numerator = $numerator / $gcd;
+        $this->denominator = $denominator / $gcd;
+
     }
 
     public function plus(Fraction $that): Fraction
