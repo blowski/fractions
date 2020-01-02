@@ -28,4 +28,11 @@ class AddFractionsTest extends TestCase
         $sum = (new Fraction(0))->plus(new Fraction(5));
         self::assertEquals(new Fraction(5), $sum);
     }
+
+    /** @test */
+    function non_zero_plus_non_zero(): void
+    {
+        $sum = (new Fraction(3))->plus(new Fraction(4));
+        self::assertEquals(new Fraction(7), $sum);
+    }
 }

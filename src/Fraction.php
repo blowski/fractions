@@ -14,7 +14,9 @@ final class Fraction
 
     public function plus(Fraction $that): Fraction
     {
-        if($that->intValue !== 0) {
+        if ($this->intValue !== 0 && $that->intValue !== 0) {
+            return new Fraction($this->intValue + $that->intValue);
+        } elseif ($that->intValue !== 0) {
             return $that;
         } else {
             return $this;
