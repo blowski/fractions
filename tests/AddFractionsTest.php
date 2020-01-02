@@ -8,31 +8,27 @@ use PHPUnit\Framework\TestCase;
 
 class AddFractionsTest extends TestCase
 {
-    /** @test */
-    function zero_plus_zero_should_equal_zero(): void
+    /**
+     * @test
+     * @dataProvider exampleIntegerCases
+     */
+    function integers(int $augend, int $addend, int $expectedResult): void
     {
-        $sum = (new Fraction(0))->plus(new Fraction(0));
-        self::assertEquals(new Fraction(0), $sum);
+        $sum = (new Fraction($augend))->plus(new Fraction($addend));
+        self::assertEquals(new Fraction($expectedResult), $sum);
     }
 
-    /** @test */
-    function non_zero_plus_zero(): void
+    public function exampleIntegerCases()
     {
-        $sum = (new Fraction(3))->plus(new Fraction(0));
-        self::assertEquals(new Fraction(3), $sum);
-    }
-
-    /** @test */
-    function zero_plus_non_zero(): void
-    {
-        $sum = (new Fraction(0))->plus(new Fraction(5));
-        self::assertEquals(new Fraction(5), $sum);
-    }
-
-    /** @test */
-    function non_zero_plus_non_zero(): void
-    {
-        $sum = (new Fraction(3))->plus(new Fraction(4));
-        self::assertEquals(new Fraction(7), $sum);
+        return [
+            'zero plus zero' => [0, 0, 0],
+            'positive non-zero plus zero' => [4, 0, 4],
+            'zero plus positive non-zero' => [0, 7, 7],
+            'positive non-zero plus positive non-zero' => [5, 6, 11],
+            'bigger negative plus smaller positive' => [-9, 3, -6],
+            'smaller negative plus bigger positive' => [-3, 7, 4],
+            'nearly max int plus 1' => [PHP_INT_MAX - 1, 1, PHP_INT_MAX],
+            '1 plus nearly max int' => [1, PHP_INT_MAX - 1, PHP_INT_MAX],
+        ];
     }
 }
