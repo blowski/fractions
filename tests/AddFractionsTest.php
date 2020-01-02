@@ -36,24 +36,24 @@ class AddFractionsTest extends TestCase
         ];
     }
 
-    /** @test */
-    function same_denominators(): void
+    /**
+     * @test
+     * @dataProvider exampleFractions
+     */
+    function add_fractions(string $augend, string $addend, string $expectedResult): void
     {
-        $sum = Fraction::fromString('1/5')->plus(Fraction::fromString('2/5'));
-        self::assertEquals(Fraction::fromString('3/5'), $sum);
+        self::assertEquals(
+            Fraction::fromString($expectedResult),
+            Fraction::fromString($augend)->plus(Fraction::fromString($addend))
+        );
     }
 
-    /** @test */
-    function different_denominators(): void
+    public function exampleFractions()
     {
-        $sum = (Fraction::fromString('1/6'))->plus(Fraction::fromString('1/5'));
-        self::assertEquals(Fraction::fromString('11/30'), $sum);
-    }
-
-    /** @test */
-    function negative_numerators(): void
-    {
-        $sum = Fraction::fromString('-7/8')->plus(Fraction::fromString('2/8'));
-        self::assertEquals(Fraction::fromString('-5/8'), $sum);
+        return [
+            'same denominators' => ['1/5', '2/5', '3/5'],
+            'different denominators' => ['1/6', '1/5', '11/30'],
+            'negative numerators' => ['-7/8', '2/8', '-5/8'],
+        ];
     }
 }
