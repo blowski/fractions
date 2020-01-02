@@ -49,4 +49,11 @@ class AddFractionsTest extends TestCase
         $sum = (new Fraction(1, 6))->plus(new Fraction(1, 5));
         self::assertEquals(new Fraction(11, 30), $sum);
     }
+
+    /** @test */
+    function negative_numerators(): void
+    {
+        $sum = (new Fraction(-7, 8))->plus(new Fraction(2, 8));
+        self::assertEquals(new Fraction(-5, 8), $sum);
+    }
 }
