@@ -39,21 +39,21 @@ class AddFractionsTest extends TestCase
     /** @test */
     function same_denominators(): void
     {
-        $sum = (new Fraction(1, 5))->plus(new Fraction(2, 5));
-        self::assertEquals(new Fraction(3, 5), $sum);
+        $sum = Fraction::fromString('1/5')->plus(Fraction::fromString('2/5'));
+        self::assertEquals((new Fraction(3, 5)), $sum);
     }
 
     /** @test */
     function different_denominators(): void
     {
-        $sum = (new Fraction(1, 6))->plus(new Fraction(1, 5));
+        $sum = (Fraction::fromString('1/6'))->plus(Fraction::fromString('1/5'));
         self::assertEquals(new Fraction(11, 30), $sum);
     }
 
     /** @test */
     function negative_numerators(): void
     {
-        $sum = (new Fraction(-7, 8))->plus(new Fraction(2, 8));
+        $sum = Fraction::fromString('-7/8')->plus(Fraction::fromString('2/8'));
         self::assertEquals(new Fraction(-5, 8), $sum);
     }
 }
