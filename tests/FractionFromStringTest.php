@@ -32,5 +32,30 @@ class FractionFromStringTest extends TestCase
         ];
     }
 
+    /**
+     * @test
+     * @dataProvider invalidExamples
+     */
+    function when_fraction_is_invalid_it_throws_an_exception(string $invalidFractionAsString): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        Fraction::fromString($invalidFractionAsString);
+    }
+
+    public function invalidExamples()
+    {
+        return [
+            ['a'],
+            ['1/'],
+            ['2/'],
+            ['/3'],
+            ['c/d'],
+            ['4/e'],
+            ['f/5'],
+            ['0/0'],
+            ['/'],
+        ];
+    }
+
 
 }

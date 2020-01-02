@@ -24,6 +24,10 @@ final class Fraction
             $numerator = $fractionAsString;
             $denominator = 1;
         }
+
+        if(!is_numeric($numerator) || !is_numeric($denominator) || $denominator === '0') {
+            throw new \InvalidArgumentException("{$fractionAsString} is not a valid fraction");
+        }
         return new self((int) $numerator, (int) $denominator);
 
     }
