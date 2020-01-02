@@ -35,4 +35,11 @@ class AddFractionsTest extends TestCase
             '1 plus min int' => [1, PHP_INT_MIN, PHP_INT_MIN + 1],
         ];
     }
+
+    /** @test */
+    function same_denominators(): void
+    {
+        $sum = (new Fraction(1, 5))->plus(new Fraction(2, 5));
+        self::assertEquals(new Fraction(3, 5), $sum);
+    }
 }
