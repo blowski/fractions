@@ -15,6 +15,7 @@ class GCDTest extends TestCase
     function calculates_greatest_common_divisor_of_two_integers(int $first, int $second, int $expectedGCD): void
     {
         self::assertEquals($expectedGCD, GCDCalculator::gcd($first, $second));
+        self::assertEquals($expectedGCD, GCDCalculator::gcd($second, $first));
     }
 
     public function getExamples()
@@ -26,6 +27,10 @@ class GCDTest extends TestCase
             [8, 18, 2],
             [6, 15, 3],
             [3, 7, 1],
+            [0, 10, 10],
+            [-9, -21, -3],
+            [-7, 14, -7],
+            [8, -12, -4],
         ];
     }
 }
