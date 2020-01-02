@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Blowski\Fractions\Tests;
 
+use Blowski\Fractions\GCDCalculator;
 use PHPUnit\Framework\TestCase;
 
 class GCDTest extends TestCase
@@ -13,17 +14,7 @@ class GCDTest extends TestCase
      */
     function calculates_greatest_common_divisor_of_two_integers(int $first, int $second, int $expectedGCD): void
     {
-        self::assertEquals($expectedGCD, $this->gcd($first, $second));
-    }
-
-    public function gcd(int $a, int $b): int
-    {
-        while($b !== 0) {
-            $t = $b;
-            $b = $a % $b;
-            $a = $t;
-        }
-        return $a;
+        self::assertEquals($expectedGCD, GCDCalculator::gcd($first, $second));
     }
 
     public function getExamples()
