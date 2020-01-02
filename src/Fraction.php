@@ -16,6 +16,18 @@ final class Fraction
 
     }
 
+    public static function fromString(string $fractionAsString): self
+    {
+        if(strpos($fractionAsString, '/')) {
+            [$numerator, $denominator] = explode('/', $fractionAsString);
+        } else {
+            $numerator = $fractionAsString;
+            $denominator = 1;
+        }
+        return new self((int) $numerator, (int) $denominator);
+
+    }
+
     public function plus(Fraction $that): Fraction
     {
         return new Fraction(
