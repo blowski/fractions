@@ -29,6 +29,10 @@ class AddFractionsTest extends TestCase
             'smaller negative plus bigger positive' => [-3, 7, 4],
             'nearly max int plus 1' => [PHP_INT_MAX - 1, 1, PHP_INT_MAX],
             '1 plus nearly max int' => [1, PHP_INT_MAX - 1, PHP_INT_MAX],
+            'max int plus zero' => [PHP_INT_MAX, 0, PHP_INT_MAX],
+            'zero plus max int' => [0, PHP_INT_MAX, PHP_INT_MAX],
+            'min int plus 1' => [PHP_INT_MIN, 1, PHP_INT_MIN + 1],
+            '1 plus min int' => [1, PHP_INT_MIN, PHP_INT_MIN + 1],
         ];
     }
 }
