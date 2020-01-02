@@ -40,20 +40,20 @@ class AddFractionsTest extends TestCase
     function same_denominators(): void
     {
         $sum = Fraction::fromString('1/5')->plus(Fraction::fromString('2/5'));
-        self::assertEquals((new Fraction(3, 5)), $sum);
+        self::assertEquals(Fraction::fromString('3/5'), $sum);
     }
 
     /** @test */
     function different_denominators(): void
     {
         $sum = (Fraction::fromString('1/6'))->plus(Fraction::fromString('1/5'));
-        self::assertEquals(new Fraction(11, 30), $sum);
+        self::assertEquals(Fraction::fromString('11/30'), $sum);
     }
 
     /** @test */
     function negative_numerators(): void
     {
         $sum = Fraction::fromString('-7/8')->plus(Fraction::fromString('2/8'));
-        self::assertEquals(new Fraction(-5, 8), $sum);
+        self::assertEquals(Fraction::fromString('-5/8'), $sum);
     }
 }
