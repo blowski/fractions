@@ -14,6 +14,10 @@ final class Fraction
 
     public function plus(Fraction $that): Fraction
     {
-        return $this;
+        if($that->intValue !== 0) {
+            return $that;
+        } else {
+            return $this;
+        }
     }
 }
