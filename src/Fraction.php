@@ -11,6 +11,7 @@ final class Fraction
     public function __construct(int $numerator, int $denominator = 1)
     {
         $gcd = GCDCalculator::gcd($numerator, $denominator);
+        $gcd *= $gcd > 0 ? 1 : -1;
         $this->numerator = $numerator / $gcd;
         $this->denominator = $denominator / $gcd;
     }
