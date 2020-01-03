@@ -37,4 +37,35 @@ class SubtractFractionsTest extends TestCase
             'nearly min int minus 1' => [PHP_INT_MIN  + 1, 1, PHP_INT_MIN],
         ];
     }
+
+    /**
+     * @test
+     * @dataProvider exampleFractionCases
+     */
+    function fractions(string $minuend, string $subtrahend, string $expectedResult): void
+    {
+        $difference = Fraction::fromString($minuend)->minus(Fraction::fromString($subtrahend));
+        self::assertEquals(
+            Fraction::fromString($expectedResult),
+            $difference,
+            "Expected {$minuend} - {$subtrahend} to equal $expectedResult, but got $difference"
+        );
+    }
+
+    public function exampleFractionCases()
+    {
+        return [
+            ['4/5', '3/5', '1/5'],
+            ['9/7', '4/7', '5/7'],
+            ['3/4', '1/8', '5/8'],
+            ['12/7', '1', '5/7'],
+            ['-1/2', '3/4', '-5/4'],
+            ['-9/10', '0', '-9/10'],
+            ['0', '19/20', '-19/20'],
+            ['0', '-5/6', '5/6'],
+            ['3', '2/3', '7/3'],
+            ['1', '17/8', '-9/8'],
+            ['7/12', '-4/12', '11/12'],
+        ];
+    }
 }

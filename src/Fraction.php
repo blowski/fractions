@@ -49,8 +49,11 @@ final class Fraction
         );
     }
 
-    public function minus(Fraction $that)
+    public function minus(Fraction $that): Fraction
     {
-        return new Fraction($this->numerator - $that->numerator);
+        return new Fraction(
+            ($this->numerator * $that->denominator) - ($that->numerator * $this->denominator),
+            $this->denominator * $that->denominator
+        );
     }
 }
