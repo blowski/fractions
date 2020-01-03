@@ -23,7 +23,7 @@ class FractionToStringTest extends TestCase
     /** @test */
     function negative_denominator(): void
     {
-        self::assertEquals('1/-2', (string) new Fraction(1, -2));
+        self::assertEquals('-1/2', (string) new Fraction(1, -2));
     }
 
     /** @test */

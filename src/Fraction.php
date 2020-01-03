@@ -11,9 +11,9 @@ final class Fraction
     public function __construct(int $numerator, int $denominator = 1)
     {
         $gcd = GCDCalculator::gcd($numerator, $denominator);
-        $gcd *= $gcd > 0 ? 1 : -1;
-        $this->numerator = $numerator / $gcd;
-        $this->denominator = $denominator / $gcd;
+        $sign = ($denominator / $gcd) > 0 ? 1 : -1;
+        $this->numerator = $numerator / $gcd * $sign;
+        $this->denominator = $denominator / $gcd * $sign;
     }
 
     public function __toString()
@@ -63,5 +63,10 @@ final class Fraction
             $this->numerator * $that->numerator,
             $this->denominator * $that->denominator
         );
+    }
+
+    public function dividedBy(Fraction $that): Fraction
+    {
+        return $this->multiplyBy(new Fraction($that->denominator, $that->numerator));
     }
 }
