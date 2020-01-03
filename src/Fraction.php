@@ -56,4 +56,11 @@ final class Fraction
             $this->denominator * $that->denominator
         );
     }
+
+    public function multiplyBy(Fraction $that): Fraction
+    {
+        return new Fraction(
+            $this->numerator * $that->numerator
+        );
+    }
 }
