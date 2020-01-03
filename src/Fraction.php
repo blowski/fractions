@@ -60,7 +60,8 @@ final class Fraction
     public function multiplyBy(Fraction $that): Fraction
     {
         return new Fraction(
-            $this->numerator * $that->numerator
+            $this->numerator * $that->numerator,
+            $this->denominator * $that->denominator
         );
     }
 }
